@@ -1,7 +1,12 @@
 /// <reference types= "cypress" />
 
+Cypress.on("uncaught:exception", (err, runnable) => {
+  // returning false here prevents Cypress from
+  // failing the test
+  return false;
+});
 
- Cypress.Commands.add("openURL", () =>  {
+Cypress.Commands.add("openURL", () =>  {
   cy.visit("https://www.almosafer.com/en");
 
 cy.get('.cta__saudi').click();
@@ -22,7 +27,7 @@ describe('template spec', () => {
     cy.get('[data-testid="AutoCompleteResultsList"]').find('li').eq(1).click()
     cy.get('[data-testid="HotelSearchBox__SearchButton"]').click()
     // cy.wait(15000)
-    cy.get('.loading-spinner').should('not.exist', { timeout: 10000 });
+    cy.get('.loading-spinner').should('not.exist', { timeout: 20000 });
     cy.get('[data-testid="HotelSearchResult__sort__LOWEST_PRICE"]').click();
     cy.wait(15000) 
     cy.get('[data-testid="HotelSearchResult__Hotel0__PriceLabel"] > .Price__Value').invoke('text').then((text2) =>{

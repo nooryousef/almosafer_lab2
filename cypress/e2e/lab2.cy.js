@@ -28,7 +28,7 @@ describe('template spec', () => {
     cy.get('[data-testid="HotelSearchBox__SearchButton"]').click()
     // cy.wait(15000)
     cy.get('.loading-spinner').should('not.exist', { timeout: 20000 });
-    cy.get('[data-testid="HotelSearchResult__sort__LOWEST_PRICE"]').click();
+    cy.get('[data-testid="HotelSearchResult__sort__LOWEST_PRICE"]').wait(5000).click();
     cy.wait(15000) 
     cy.get('[data-testid="HotelSearchResult__Hotel0__PriceLabel"] > .Price__Value').invoke('text').then((text2) =>{
 

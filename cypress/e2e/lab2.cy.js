@@ -24,7 +24,7 @@ describe('template spec', () => {
     // cy.wait(15000)
     cy.get('.loading-spinner').should('not.exist', { timeout: 10000 });
     cy.get('[data-testid="HotelSearchResult__sort__LOWEST_PRICE"]').click();
-    cy.wait(15000)
+    cy.wait(15000) 
     cy.get('[data-testid="HotelSearchResult__Hotel0__PriceLabel"] > .Price__Value').invoke('text').then((text2) =>{
 
       const priceTwoIs = parseFloat(text2)
